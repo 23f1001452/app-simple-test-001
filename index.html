@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Optional: Bootstrap for quick reset and styling -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1K+0U2K6U5U6Lkz4Zl5pZ3U5Q5B5f5B5B5B5B5B5B5B"
+    crossorigin="anonymous"
+  >
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      color: red;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">Test Successful</h1>
+
+  <script>
+    (function() {
+      try {
+        const h1 = document.getElementById('main-title');
+        if (!h1) {
+          throw new Error('h1 element with id "main-title" not found.');
+        }
+        if (h1.textContent.trim() !== 'Test Successful') {
+          console.warn('h1 text does not match expected content.');
+        }
+        const computedColor = getComputedStyle(h1).color;
+        // Simple check for red (rgb(255, 0, 0) or equivalent)
+        const isRed = /rgb\\s*\\(\\s*255\\s*,\\s*0\\s*,\\s*0\\s*\\)/.test(computedColor);
+        if (!isRed) {
+          console.warn('h1 color is not red as expected.');
+        }
+      } catch (e) {
+        console.error('Initialization error:', e);
+      }
+    })();
+  </script>
+</body>
+</html>
